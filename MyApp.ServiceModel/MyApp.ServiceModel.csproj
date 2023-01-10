@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ServiceStack.Interfaces" Version="6.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Types\" />
+  </ItemGroup>
+
+</Project>
