@@ -6,6 +6,7 @@
 # Custom
 dist/
 coverage/
+lib/
 
 # User-specific files
 *.suo

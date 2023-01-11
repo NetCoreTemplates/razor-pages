@@ -1,6 +1,8 @@
 using System.Net;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyApp.ServiceModel.Types;
+using ServiceStack.Text;
 
 [assembly: HostingStartup(typeof(MyApp.ConfigureUi))]
 
@@ -18,9 +20,9 @@ public class ConfigureUi : IHostingStartup
                 new() { Href = "/",         Label = "Home",    Exact = true },
                 new() { Href = "/Privacy",  Label = "Privacy" },
                 new() { Href = "/TodoMvc",  Label = "Todo Mvc" },
+                new() { Href = "/Contacts", Label = "Contacts", Show = "auth" },
                 new() { Href = "/SignIn",   Label = "Sign In",  Hide = "auth" },
                 new() { Href = "/Profile",  Label = "Profile",  Show = "auth" },
-                new() { Href = "/Contacts", Label = "Contacts", Show = "auth" },
                 new() { Href = "/Admin",    Label = "Admin",    Show = "role:Admin" },
             });
         });

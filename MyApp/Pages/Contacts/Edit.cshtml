@@ -18,9 +18,8 @@
     </div>
     return;
 }
+else if (contact == null) { return; }
 
-@if (contact != null)
-{
 <div class="w-sm">
     <h3>Update Contact</h3>
     
@@ -77,7 +76,7 @@
 </div>
     
 <script type="module">
-import { $1, bootstrapForm } from "/js/servicestack-client.mjs"
+import { $1, bootstrapForm } from "@@servicestack/client"
 bootstrapForm($1("form"), {
     model: @contact.AsRawJson(),
     success: r => {
@@ -85,5 +84,3 @@ bootstrapForm($1("form"), {
     },
 })
 </script>
-    
-}

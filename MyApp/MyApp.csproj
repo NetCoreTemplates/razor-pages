@@ -12,10 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="ServiceStack" Version="6.*" />
     <PackageReference Include="ServiceStack.Mvc" Version="6.*" />
     <PackageReference Include="ServiceStack.Server" Version="6.*" />
@@ -27,11 +23,6 @@
   <ItemGroup>
     <ProjectReference Include="..\MyApp.ServiceInterface\MyApp.ServiceInterface.csproj" />
     <ProjectReference Include="..\MyApp.ServiceModel\MyApp.ServiceModel.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="wwwroot\assets\svg\app\logo.svg" />
-    <_ContentIncludedByDefault Remove="wwwroot\assets\svg\svg-icons\home.svg" />
   </ItemGroup>
 
 </Project>

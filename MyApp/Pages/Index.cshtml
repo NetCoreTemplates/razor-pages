@@ -9,8 +9,16 @@
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
 
+<div class="mt-5 text-center">
+    <h3 class="display-6">Getting Started</h3>
+    <p>
+        If not created with <a href="https://docs.servicestack.net/dotnet-new">x new</a>, run postinstall script to install libraries with:
+    </p>
+    <pre class="fs-4">$ npm run postinstall</pre>
+</div>
+
 <div class="mt-5 d-flex justify-content-center">
-    <div class="max-w-sm" style="width:22rem">
+    <div class="w-sm">
         <h2><a href="/ui/Hello">Hello</a> API</h2>
         <input class="form-control" type="text" id="txtName">
         <h4 id="result" class="mt-4 text-success text-center"></h4>
@@ -19,7 +27,7 @@
 
 @section Scripts {
 <script type="module">
-import { $1 } from "/js/servicestack-client.mjs"
+import { $1 } from "@@servicestack/client"
 import { client } from "/js/default.mjs"
 import { Hello } from "/js/dtos.mjs"
 

@@ -74,44 +74,5 @@
     </table>
 </template>
 
-@section Scripts {
-<script type="module">
-import { $1, bootstrapForm, bindHandlers } from "/js/servicestack-client.mjs"
-import { client } from "/js/default.mjs"
-import { GetContacts, DeleteContact } from "/js/dtos.mjs"
-import { createApp, reactive, ref, computed } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
-
-let contacts = @((await Gateway.SendAsync(new GetContacts())).Results.AsRawJson());
-let AppData = reactive({ contacts })
-
-bootstrapForm($1("form"), {
-    success: function (r) {
-        $1("form").reset()
-        AppData.contacts.push(r.result)
-    },
-})
-
-createApp({
-    template:$1('#results-template'),
-    setup(props) {
-        let contacts = computed(() => AppData.contacts)
-        
-        const deleteContact = ({ id }) => {
-            if (!confirm('Are you sure?')) 
-                return;
-            client.apiVoid(new DeleteContact({ id })).then(_ => 
-              client.api(new GetContacts()).then(api => {
-                 if (api.succeeded) {
-                     AppData.contacts = api.response.results
-                 }
-             }))
-        }
-        return {
-            contacts,
-            deleteContact,            
-        }
-    },
-}).mount('#results')
-
-</script>
-}
+<script>CONTACTS = @((await Gateway.SendAsync(new GetContacts())).Results.AsRawJson());</script>
+<script type="module" src="Pages/Contacts/Index.js"></script>
