@@ -1,6 +1,7 @@
 {
     "scripts": {
         "postinstall": "npm run import",
-        "import": "node import.js"
+        "import": "node import.js",
+        "dtos": "cd wwwroot && x mjs"
     }
 }

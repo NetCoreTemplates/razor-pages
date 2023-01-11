@@ -1,5 +1,5 @@
 /* Options:
-Date: 2023-01-10 13:41:27
+Date: 2023-01-11 22:55:03
 Version: 6.51
 Tip: To override a DTO option, remove "//" prefix before updating
 BaseUrl: https://localhost:5001
@@ -39,6 +39,16 @@ export class QueryBase {
 export class QueryData extends QueryBase {
     constructor(init) { super(init); Object.assign(this, init); }
 }
+export class Contact {
+    constructor(init) { Object.assign(this, init); }
+    id;
+    userAuthId;
+    title;
+    name;
+    color;
+    filmGenres;
+    age;
+}
 export class ResponseError {
     constructor(init) { Object.assign(this, init); }
     errorCode;
@@ -54,20 +64,10 @@ export class ResponseStatus {
     errors;
     meta;
 }
-export class Contact {
-    constructor(init) { Object.assign(this, init); }
-    id;
-    userAuthId;
-    title;
-    name;
-    color;
-    filmGenres;
-    age;
-}
 export class GetContactsResponse {
     constructor(init) { Object.assign(this, init); }
-    responseStatus;
     results;
+    responseStatus;
 }
 export class GetContactResponse {
     constructor(init) { Object.assign(this, init); }
@@ -146,14 +146,14 @@ export class RegisterResponse {
 export class GetContacts {
     constructor(init) { Object.assign(this, init); }
     getTypeName() { return 'GetContacts'; };
-    getMethod() { return 'POST'; };
+    getMethod() { return 'GET'; };
     createResponse() { return new GetContactsResponse(); };
 }
 export class GetContact {
     constructor(init) { Object.assign(this, init); }
     id;
     getTypeName() { return 'GetContact'; };
-    getMethod() { return 'POST'; };
+    getMethod() { return 'GET'; };
     createResponse() { return new GetContactResponse(); };
 }
 export class CreateContact {
@@ -165,9 +165,8 @@ export class CreateContact {
     age;
     agree;
     continue;
-    errorView;
     getTypeName() { return 'CreateContact'; };
-    getMethod() { return 'ANYHTML'; };
+    getMethod() { return 'POST'; };
     createResponse() { return new CreateContactResponse(); };
 }
 export class DeleteContact {
@@ -175,7 +174,7 @@ export class DeleteContact {
     id;
     continue;
     getTypeName() { return 'DeleteContact'; };
-    getMethod() { return 'POSTHTML'; };
+    getMethod() { return 'DELETE'; };
     createResponse() { };
 }
 export class UpdateContact {
@@ -189,7 +188,7 @@ export class UpdateContact {
     continue;
     errorView;
     getTypeName() { return 'UpdateContact'; };
-    getMethod() { return 'POST'; };
+    getMethod() { return 'PATCH'; };
     createResponse() { return new UpdateContactResponse(); };
 }
 export class Hello {
