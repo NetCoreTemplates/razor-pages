@@ -3,7 +3,7 @@ import { client } from "../../js/default.mjs"
 import { GetContacts, DeleteContact } from "../../js/dtos.mjs"
 import { createApp, reactive, ref, computed } from "vue"
 
-let contacts = CONTACTS //defined in Contacts/Index.chtml
+let contacts = window.CONTACTS //defined in Contacts/Index.chtml
 
 let AppData = reactive({ contacts })
 
