@@ -9,7 +9,7 @@ public class Contact
     public Title Title { get; set; }
     public string? Name { get; set; }
     public string? Color { get; set; }
-    public FilmGenres[]? FilmGenres { get; set; }
+    public FilmGenre? FavoriteGenre { get; set; }
     public int Age { get; set; }
 }
 
@@ -21,7 +21,7 @@ public enum Title
     [Description("Miss.")] Miss
 }
 
-public enum FilmGenres
+public enum FilmGenre
 {
     Action,
     Adventure,

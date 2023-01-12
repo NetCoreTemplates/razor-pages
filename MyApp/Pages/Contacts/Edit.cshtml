@@ -54,13 +54,13 @@ else if (contact == null) { return; }
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-check-label">Favorite Film Genres</label>
+            <label class="form-check-label">Favorite Film Genre</label>
             <div class="form-check">
                 @foreach (var it in Html.ContactGenres())
                 {
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" id="filmGenres-@it" name="filmGenres" value="@it" class="form-check-input">
-                        <label class="form-check-label" for="filmGenres-@it">@it</label>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="favoriteGenre-@it" name="favoriteGenre" value="@it" class="custom-control-input">
+                        <label class="custom-control-label" for="favoriteGenre-@it">@it</label>
                     </div>
                 }
             </div>

@@ -4,6 +4,7 @@ using ServiceStack;
 
 namespace MyApp.ServiceModel;
 
+// Custom Routes are unnecessary, uncomment to enable pretty URL access to APIs
 // [Route("/contacts", "GET")]
 // [Route("/contacts/{Id}", "GET")]
 [Tag("contacts"), ValidateIsAuthenticated]
@@ -27,15 +28,14 @@ public class CreateContact : IPost, IReturn<CreateContactResponse>
     [ValidateNotEmpty]
     public string? Name { get; set; }
     [Validate("ValidColor()", Message = "Must be a valid color")]
+    [Input(Type="select", EvalAllowableEntries = "AppData.Colors")] // Used in API Explorer
     public string? Color { get; set; }
-    [ValidateNotEmpty(Message = "Please select at least 1 genre")]
-    public FilmGenres[]? FilmGenres { get; set; }
+    [ValidateNotEmpty(Message = "Please select your favorite genre")]
+    public FilmGenre? FavoriteGenre { get; set; }
     [ValidateGreaterThan(13, Message = "Contacts must be older than 13")]
     public int Age { get; set; }
     [ValidateEqual(true, Message = "You must agree before submitting")]
     public bool Agree { get; set; }
-    
-    //public string? Continue { get; set; }
 }
 public class CreateContactResponse 
 {
@@ -50,12 +50,10 @@ public class UpdateContact : IPatch, IReturn<UpdateContactResponse>
     public int Id { get; set; }
     public Title Title { get; set; }
     public string? Name { get; set; }
+    [Input(Type="select", EvalAllowableEntries = "AppData.Colors")] // Used in API Explorer
     public string? Color { get; set; }
-    public FilmGenres[]? FilmGenres { get; set; }
+    public FilmGenre? FavoriteGenre { get; set; }
     public int Age { get; set; }
-    
-    public string? Continue { get; set; }
-    public string? ErrorView { get; set; }
 }
 public class UpdateContactResponse 
 {
@@ -68,5 +66,4 @@ public class UpdateContactResponse
 public class DeleteContact : IDelete, IReturnVoid
 {
     public int Id { get; set; }
-    public string? Continue { get; set; }
 }

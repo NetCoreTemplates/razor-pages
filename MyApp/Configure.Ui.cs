@@ -25,28 +25,31 @@ public class ConfigureUi : IHostingStartup
                 new() { Href = "/Profile",  Label = "Profile",  Show = "auth" },
                 new() { Href = "/Admin",    Label = "Admin",    Show = "role:Admin" },
             });
+            
+            //Referenced in Contacts.cs EvalAllowableEntries
+            appHost.ScriptContext.Args[nameof(AppData)] = AppData.Instance;
         });
 }
 
 public class AppData
 {
-    public readonly Dictionary<string, string> Colors = new() {
+    internal static readonly AppData Instance = new();
+
+    public Dictionary<string, string> Colors { get; } = new() {
         {"#ffa4a2", "Red"},
         {"#b2fab4", "Green"},
         {"#9be7ff", "Blue"}
     };
-    public readonly List<string> FilmGenres = EnumUtils.GetValues<FilmGenres>().Map(x => x.ToDescription());
+    public List<string> FilmGenres { get; } = EnumUtils.GetValues<FilmGenre>().Map(x => x.ToDescription());
 
-    public readonly List<KeyValuePair<string, string>> Titles = EnumUtils.GetValues<Title>()
+    public List<KeyValuePair<string, string>> Titles { get; } = EnumUtils.GetValues<Title>()
         .Where(x => x != Title.Unspecified)
         .ToKeyValuePairs();
 }
 
 public static class AppDataExtensions
 {
-    internal static readonly AppData Instance = new();
-
-    public static Dictionary<string, string> ContactColors(this IHtmlHelper html) => Instance.Colors;
-    public static List<KeyValuePair<string, string>> ContactTitles(this IHtmlHelper html) => Instance.Titles;
-    public static List<string> ContactGenres(this IHtmlHelper html) => Instance.FilmGenres;
+    public static Dictionary<string, string> ContactColors(this IHtmlHelper html) => AppData.Instance.Colors;
+    public static List<KeyValuePair<string, string>> ContactTitles(this IHtmlHelper html) => AppData.Instance.Titles;
+    public static List<string> ContactGenres(this IHtmlHelper html) => AppData.Instance.FilmGenres;
 }

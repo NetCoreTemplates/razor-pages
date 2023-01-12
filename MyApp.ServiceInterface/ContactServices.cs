@@ -22,7 +22,7 @@ public class UpdateContactValidator : AbstractValidator<UpdateContact>
         RuleFor(r => r.Title).NotEqual(Title.Unspecified).WithMessage("Please choose a title");
         RuleFor(r => r.Name).NotEmpty();
         RuleFor(r => r.Color).Must(x => x.IsValidColor()).WithMessage("Must be a valid color");
-        RuleFor(r => r.FilmGenres).NotEmpty().WithMessage("Please select at least 1 genre");
+        RuleFor(r => r.FavoriteGenre).NotEmpty().WithMessage("Please select your favorite genre");
         RuleFor(r => r.Age).GreaterThan(13).WithMessage("Contacts must be older than 13");
     }
 }
@@ -74,9 +74,7 @@ public class ContactServices : Service
         contact.PopulateWith(request);
         contact.ModifiedDate = DateTime.UtcNow;
         
-        return request.Continue != null 
-            ? HttpResult.Redirect(request.Continue)
-            : new UpdateContactResponse();
+        return new UpdateContactResponse();
     }
 }
 

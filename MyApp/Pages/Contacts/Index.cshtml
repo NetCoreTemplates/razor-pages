@@ -2,9 +2,8 @@
 @using MyApp.ServiceModel
 @if (!await Html.EnsureAuthenticatedAsync()) { return; }
 
-<h3>Add new Contact</h3>
-
 <div class="w-sm">
+    <h3>Add new Contact</h3>
     <form action=@(new CreateContact().ToPostUrl()) method="post" class="w-100">
         <div class="mb-3" data-validation-summary="title,name,color,filmGenres,age,agree"></div>
 
@@ -35,15 +34,15 @@
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-check-label">Favorite Film Genres</label>
+            <label class="form-check-label">Favorite Film Genre</label>
             <div class="form-check">
-            @foreach (var it in Html.ContactGenres())
-            {
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" id="filmGenres-@it" name="filmGenres" value="@it" class="form-check-input">
-                    <label class="form-check-label" for="filmGenres-@it">@it</label>
-                </div>
-            }
+                @foreach (var it in Html.ContactGenres())
+                {
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="FavoriteGenre-@it" name="favoriteGenre" value="@it" class="custom-control-input">
+                        <label class="custom-control-label" for="FavoriteGenre-@it">@it</label>
+                    </div>
+                }
             </div>
         </div>
         <div class="mb-3">
