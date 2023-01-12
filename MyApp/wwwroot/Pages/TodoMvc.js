@@ -1,7 +1,7 @@
 import { createApp, reactive } from 'vue'
 import { $1, toKebabCase } from "@servicestack/client"
 import { client } from "../js/default.mjs"
-import { Todo, QueryTodos, CreateTodo, UpdateTodo, DeleteTodo, DeleteTodos } from "../js/dtos.mjs"
+import { Todo, QueryTodos, CreateTodo, UpdateTodo, DeleteTodos } from "../js/dtos.mjs"
 import VueTw from "vue-tw";
 
 let store = {
@@ -38,7 +38,7 @@ let store = {
     },
     removeTodo(id) {
         this.todos = this.todos.filter(x => x.id !== id)
-        client.api(new DeleteTodo({ id }))
+        client.api(new DeleteTodos({ ids:[id] }))
             .then(api => this.refreshTodos(api.error))
     },
     removeFinishedTodos() {

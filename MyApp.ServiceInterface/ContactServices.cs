@@ -38,16 +38,11 @@ public class ContactServices : Service
         return new GetContactsResponse
         {
             Results = Contacts.Values
-                .Where(x => x.UserAuthId == userId)
+                .Where(x => x.UserAuthId == userId && request.Id == null || x.Id == request.Id)
                 .OrderByDescending(x => x.Id)
                 .Map(x => x.ConvertTo<Contact>())
         };
     }
-
-    public async Task<object> Any(GetContact request) =>
-        Contacts.TryGetValue(request.Id, out var contact) && contact.UserAuthId == await this.GetUserIdAsync()
-            ? new GetContactResponse { Result = contact.ConvertTo<Contact>() }
-            : HttpError.NotFound($"Contact was not found");
 
     public async Task<object> Any(CreateContact request) 
     {

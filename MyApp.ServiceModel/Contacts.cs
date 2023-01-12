@@ -5,28 +5,20 @@ using ServiceStack;
 namespace MyApp.ServiceModel;
 
 // [Route("/contacts", "GET")]
-[ValidateIsAuthenticated]
-public class GetContacts : IGet, IReturn<GetContactsResponse> {}
+// [Route("/contacts/{Id}", "GET")]
+[Tag("contacts"), ValidateIsAuthenticated]
+public class GetContacts : IGet, IReturn<GetContactsResponse>
+{
+    public int? Id { get; set; }
+}
 public class GetContactsResponse 
 {
     public List<Contact>? Results { get; set; }
     public ResponseStatus? ResponseStatus { get; set; }
 }
 
-// [Route("/contacts/{Id}", "GET")]
-[ValidateIsAuthenticated]
-public class GetContact : IGet, IReturn<GetContactResponse >
-{
-    public int Id { get; set; }
-}
-public class GetContactResponse 
-{
-    public Contact? Result { get; set; }
-    public ResponseStatus? ResponseStatus { get; set; }
-}
-
 //[Route("/contacts", "POST")]
-[ValidateIsAuthenticated]
+[Tag("contacts"), ValidateIsAuthenticated]
 public class CreateContact : IPost, IReturn<CreateContactResponse>
 {
     // Declarative Validation Example 
@@ -43,7 +35,7 @@ public class CreateContact : IPost, IReturn<CreateContactResponse>
     [ValidateEqual(true, Message = "You must agree before submitting")]
     public bool Agree { get; set; }
     
-    public string? Continue { get; set; }
+    //public string? Continue { get; set; }
 }
 public class CreateContactResponse 
 {
@@ -52,7 +44,7 @@ public class CreateContactResponse
 }
 
 //[Route("/contacts/{Id}", "POST PUT")]
-[ValidateIsAuthenticated]
+[Tag("contacts"), ValidateIsAuthenticated]
 public class UpdateContact : IPatch, IReturn<UpdateContactResponse>
 {
     public int Id { get; set; }
@@ -72,7 +64,7 @@ public class UpdateContactResponse
 
 // [Route("/contacts/{Id}", "DELETE")]
 // [Route("/contacts/{Id}/delete", "POST")] // more accessible from HTML
-[ValidateIsAuthenticated]
+[Tag("contacts"), ValidateIsAuthenticated]
 public class DeleteContact : IDelete, IReturnVoid
 {
     public int Id { get; set; }

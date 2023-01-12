@@ -1,5 +1,5 @@
 /* Options:
-Date: 2023-01-11 22:55:03
+Date: 2023-01-12 09:30:41
 Version: 6.51
 Tip: To override a DTO option, remove "//" prefix before updating
 BaseUrl: https://localhost:5001
@@ -69,15 +69,10 @@ export class GetContactsResponse {
     results;
     responseStatus;
 }
-export class GetContactResponse {
-    constructor(init) { Object.assign(this, init); }
-    result;
-    responseStatus;
-}
 export class CreateContactResponse {
     constructor(init) { Object.assign(this, init); }
-    result;
     responseStatus;
+    result;
 }
 export class UpdateContactResponse {
     constructor(init) { Object.assign(this, init); }
@@ -145,16 +140,10 @@ export class RegisterResponse {
 }
 export class GetContacts {
     constructor(init) { Object.assign(this, init); }
+    id;
     getTypeName() { return 'GetContacts'; };
     getMethod() { return 'GET'; };
     createResponse() { return new GetContactsResponse(); };
-}
-export class GetContact {
-    constructor(init) { Object.assign(this, init); }
-    id;
-    getTypeName() { return 'GetContact'; };
-    getMethod() { return 'GET'; };
-    createResponse() { return new GetContactResponse(); };
 }
 export class CreateContact {
     constructor(init) { Object.assign(this, init); }
@@ -222,13 +211,6 @@ export class UpdateTodo {
     getTypeName() { return 'UpdateTodo'; };
     getMethod() { return 'PUT'; };
     createResponse() { return new Todo(); };
-}
-export class DeleteTodo {
-    constructor(init) { Object.assign(this, init); }
-    id;
-    getTypeName() { return 'DeleteTodo'; };
-    getMethod() { return 'DELETE'; };
-    createResponse() { };
 }
 export class DeleteTodos {
     constructor(init) { Object.assign(this, init); }

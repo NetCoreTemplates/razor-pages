@@ -6,8 +6,8 @@
 @{ 
     var Continue = "/Contacts";
     var id = int.Parse(Html.Query("id"));
-    var api = await Gateway.ApiAsync(new GetContact { Id = id });
-    var contact = api.Response?.Result;
+    var api = await Gateway.ApiAsync(new GetContacts { Id = id });
+    var contact = api.Response?.Results.FirstOrDefault();
 }
 
 @if (api.Error != null)

@@ -1,10 +1,10 @@
 body {
 }
+a {
+    text-decoration: inherit;
+}
 .navbar {
     border-radius: 0;
-}
-a {
-    color: #0077cc;
 }
 .form-check.form-control {
     padding-left: 1.75rem;
