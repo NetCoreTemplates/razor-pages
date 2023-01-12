@@ -5,7 +5,7 @@ import { Todo, QueryTodos, CreateTodo, UpdateTodo, DeleteTodos } from "../js/dto
 import VueTw from "vue-tw";
 
 let store = {
-    todos:[],
+    todos:window.TODOS || [],
     newTodo:'',
     filter: 'all',
     error:null,
@@ -83,5 +83,3 @@ const app = createApp({
 const components = { FilterTab }
 Object.keys(components).forEach(k => app.component(toKebabCase(k), components[k]))
 app.mount('#todomvc')
-
-store.refreshTodos()

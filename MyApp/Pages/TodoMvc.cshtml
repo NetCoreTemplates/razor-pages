@@ -72,4 +72,5 @@
 </div>
 </template>
 
+<script>TODOS = @((await Gateway.SendAsync(new QueryTodos())).Results.AsRawJson());</script>
 <script type="module" src="/Pages/TodoMvc.js"></script>
