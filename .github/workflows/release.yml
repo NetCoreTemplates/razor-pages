@@ -45,7 +45,17 @@ jobs:
           if [ "${{ github.event.inputs.version }}" != "" ]; then
             echo "TAG_NAME=${{ github.event.inputs.version }}" >> $GITHUB_ENV
           fi;
-      
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+      # Run postinstall script
+      - name: Install and build npm
+        run: |
+          npm install
+        working-directory: ./MyApp
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v1
         with:
