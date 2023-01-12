@@ -47,7 +47,7 @@ jobs:
           fi;
 
       - name: Setup node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 18
       # Run postinstall script
@@ -132,7 +132,7 @@ jobs:
 
       # Deploy Docker image with ServiceStack application using `docker compose up` remotely
       - name: remote docker-compose up via ssh
-        uses: appleboy/ssh-action@v0.1.4
+        uses: appleboy/ssh-action@v0.1.5
         env:
           APPTOKEN: ${{ env.GH_TOKEN }}
           USERNAME: ${{ env.USERNAME }}
