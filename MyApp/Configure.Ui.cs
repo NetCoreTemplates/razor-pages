@@ -32,7 +32,7 @@ public class ConfigureUi : IHostingStartup
 
 public class AppData
 {
-    internal static readonly AppData Instance = new();
+    public static readonly AppData Instance = new();
 
     public Dictionary<string, string> Colors { get; } = new() {
         {"#ffa4a2", "Red"},
