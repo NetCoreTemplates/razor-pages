@@ -39,12 +39,12 @@ let store = {
         let api = await client.api(new DeleteTodos({ ids:[id] }))
         await this.refreshTodos(api.error)
     },
-    removeFinishedTodos() {
+    async removeFinishedTodos() {
         let ids = this.todos.filter(x => x.isFinished).map(x => x.id)
         if (ids.length === 0) return
         this.todos = this.todos.filter(x => !x.isFinished)
-        client.api(new DeleteTodos({ ids }))
-            .then(api => this.refreshTodos(api.error))
+        let api = await client.api(new DeleteTodos({ ids })) 
+        await this.refreshTodos(api.error)
     },
     async toggleTodo(id) {
         const todo = this.todos.find(x => x.id === id)
