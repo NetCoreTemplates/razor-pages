@@ -31,12 +31,22 @@ Object.keys(files).forEach(dir => {
         const toFile = path.join(writeTo, dir, name)
         const toDir = path.dirname(toFile)
         if (!fs.existsSync(toDir))
-            fs.mkdirSync(toDir, { recursive: true })
-        fetch(url)
-            .then(r => r.text())
-            .then(txt => {
-                console.log(`writing ${url} to ${toFile} ...`)
-                fs.writeFileSync(toFile, txt)
-            })
+            fs.mkdirSync(toDir, { recursive: true });
+
+        (async () => {
+            for (let i=0; i<5; i++) {
+                try {
+                    let r = await fetch(url)
+                    if (!r.ok) throw new Error(`${r.status} ${r.statusText}`);
+                    let txt = await r.text()
+                    console.log(`writing ${url} to ${toFile} ...`)
+                    fs.writeFileSync(toFile, txt)
+                    return
+                } catch (e) {
+                    console.log(`fetching '${url}' failed: '${e}', retrying..`)
+                }
+            }
+        })()
+        
     })
 })
