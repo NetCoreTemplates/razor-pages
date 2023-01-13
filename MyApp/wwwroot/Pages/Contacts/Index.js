@@ -21,15 +21,14 @@ createApp({
     setup(props) {
         let contacts = computed(() => AppData.contacts)
 
-        const deleteContact = ({ id }) => {
+        const deleteContact = async ({ id }) => {
             if (!confirm('Are you sure?'))
                 return;
-            client.apiVoid(new DeleteContact({ id })).then(_ =>
-                client.api(new GetContacts()).then(api => {
-                    if (api.succeeded) {
-                        AppData.contacts = api.response.results
-                    }
-                }))
+            await client.apiVoid(new DeleteContact({ id }))
+            let api = await client.api(new GetContacts())
+            if (api.succeeded) {
+                AppData.contacts = api.response.results
+            }
         }
         return {
             contacts,

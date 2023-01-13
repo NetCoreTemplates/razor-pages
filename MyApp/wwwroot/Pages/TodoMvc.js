@@ -4,7 +4,6 @@ import ServiceStackVue from "@servicestack/vue";
 import { client } from "../js/default.mjs"
 import { Todo, QueryTodos, CreateTodo, UpdateTodo, DeleteTodos } from "../js/dtos.mjs"
 
-
 let store = {
     /** @typedef TODOS - declared in TodoMvc.cshtml 
       * @type {Todo[]} */ 
@@ -21,28 +20,24 @@ let store = {
                 ? this.unfinishedTodos()
                 : this.todos
     },
-    refreshTodos(errorStatus) {
+    async refreshTodos(errorStatus) {
         this.error = errorStatus
-        client.api(new QueryTodos())
-            .then(api => {
-                if (api.succeeded) {
-                    this.todos = api.response.results
-                }
-            })
+        let api = await client.api(new QueryTodos())
+        if (api.succeeded) {
+            this.todos = api.response.results
+        }
     },
-    addTodo() {
+    async addTodo() {
         this.todos.push(new Todo({ text:this.newTodo }))
-        client.api(new CreateTodo({ text:this.newTodo }))
-            .then(api => {
-                if (api.succeeded)
-                    this.newTodo = ''
-                return this.refreshTodos(api.error)
-            })
+        let api = await client.api(new CreateTodo({ text:this.newTodo }))
+        if (api.succeeded)
+            this.newTodo = ''
+        return this.refreshTodos(api.error)
     },
-    removeTodo(id) {
+    async removeTodo(id) {
         this.todos = this.todos.filter(x => x.id !== id)
-        client.api(new DeleteTodos({ ids:[id] }))
-            .then(api => this.refreshTodos(api.error))
+        let api = await client.api(new DeleteTodos({ ids:[id] }))
+        await this.refreshTodos(api.error)
     },
     removeFinishedTodos() {
         let ids = this.todos.filter(x => x.isFinished).map(x => x.id)
@@ -51,11 +46,11 @@ let store = {
         client.api(new DeleteTodos({ ids }))
             .then(api => this.refreshTodos(api.error))
     },
-    toggleTodo(id) {
+    async toggleTodo(id) {
         const todo = this.todos.find(x => x.id === id)
         todo.isFinished = !todo.isFinished
-        client.api(new UpdateTodo(todo))
-            .then(api => this.refreshTodos(api.error))
+        let api = await client.api(new UpdateTodo(todo))
+        await this.refreshTodos(api.error)
     },
     changeFilter(filter) {
         this.filter = filter

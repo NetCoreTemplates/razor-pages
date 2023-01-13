@@ -27,15 +27,15 @@
 
 @section Scripts {
 <script type="module">
-import { $1 } from "@@servicestack/client"
+import { $1, on } from "@@servicestack/client"
 import { client } from "/js/default.mjs"
 import { Hello } from "/js/dtos.mjs"
 
-$1("#txtName").addEventListener('keyup', e => {
-    client.get(new Hello({ name:e.target.value }))
-        .then(r => {
-            $1('#result').innerHTML = r.result;
-        })
+on("#txtName", {
+    async keyup(e) {
+        let api = await client.api(new Hello({ name:e.target.value }))
+        $1('#result').innerHTML = api.response.result
+    },
 })
 </script>
 }
