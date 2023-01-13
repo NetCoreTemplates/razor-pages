@@ -1,11 +1,14 @@
 import { createApp, reactive } from 'vue'
 import { $1, toKebabCase } from "@servicestack/client"
+import ServiceStackVue from "@servicestack/vue";
 import { client } from "../js/default.mjs"
 import { Todo, QueryTodos, CreateTodo, UpdateTodo, DeleteTodos } from "../js/dtos.mjs"
-import VueTw from "vue-tw";
+
 
 let store = {
-    todos:window.TODOS || [],
+    /** @typedef TODOS - declared in TodoMvc.cshtml 
+      * @type {Todo[]} */ 
+    todos: (window.TODOS || []),
     newTodo:'',
     filter: 'all',
     error:null,
@@ -78,7 +81,7 @@ const app = createApp({
         }
     }
 })
-.use(VueTw)
+.use(ServiceStackVue)
 
 const components = { FilterTab }
 Object.keys(components).forEach(k => app.component(toKebabCase(k), components[k]))

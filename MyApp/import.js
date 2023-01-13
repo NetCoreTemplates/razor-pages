@@ -7,7 +7,7 @@ const files = {
       'bootstrap.mjs':           'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.esm.min.js',
       'vue.mjs':                 'https://unpkg.com/vue@3.2.45/dist/vue.esm-browser.js',
       'servicestack-client.mjs': 'https://unpkg.com/@servicestack/client/dist/servicestack-client.mjs',
-      'vue-tw.mjs':              'https://unpkg.com/vue-tw/dist/vue-tw.mjs',
+      'servicestack-vue.mjs':    'https://unpkg.com/@servicestack/vue@3/dist/servicestack-vue.mjs',
   },
   css: {
       'bootstrap.css': 'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css',
@@ -16,7 +16,7 @@ const files = {
   },
   typings: {
       '@servicestack/client/index.d.ts': 'https://unpkg.com/@servicestack/client/dist/index.d.ts',  
-      'vue-tw/index.d.ts': 'https://unpkg.com/vue-tw@0.0.3/dist/index.d.ts',
+      '@servicestack/vue/index.d.ts': 'https://unpkg.com/@servicestack/vue@3/dist/index.d.ts',
   }
 }
 
