@@ -1,4 +1,4 @@
-// Usage: node import.js
+// Usage: npm install
 
 const writeTo = './wwwroot/lib'
 const files = {
