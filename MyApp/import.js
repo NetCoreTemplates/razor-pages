@@ -31,9 +31,9 @@ Object.keys(files).forEach(dir => {
         const toFile = path.join(writeTo, dir, name)
         const toDir = path.dirname(toFile)
         if (!fs.existsSync(toDir))
-            fs.mkdirSync(toDir, { recursive: true });
+            fs.mkdirSync(toDir, { recursive: true })
 
-        (async () => {
+        ;(async () => {
             for (let i=0; i<5; i++) {
                 try {
                     let r = await fetch(url)
