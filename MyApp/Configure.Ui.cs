@@ -12,7 +12,6 @@ public class ConfigureUi : IHostingStartup
 {
     public void Configure(IWebHostBuilder builder) => builder
         .ConfigureAppHost(appHost => {
-            appHost.CustomErrorHttpHandlers[HttpStatusCode.NotFound] = new RazorHandler("/NotFound");
             appHost.CustomErrorHttpHandlers[HttpStatusCode.Forbidden] = new RazorHandler("/Forbidden");
             
             // Populates @Html.Navbar() menu

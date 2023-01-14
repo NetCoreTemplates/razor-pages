@@ -9,12 +9,12 @@
 @if (!string.IsNullOrEmpty(Html.Query("role")))
 {
     <p> 
-        Required Role @Html.Query("role")
+        Required Role <b>@Html.Query("role")</b>
     </p>
 }
 @if (!string.IsNullOrEmpty(Html.Query("permission")))
 {
     <p> 
-        Required Permission @Html.Query("permission")
+        Required Permission <b>@Html.Query("permission")</b>
     </p>
 }

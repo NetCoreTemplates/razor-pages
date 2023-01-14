@@ -28,4 +28,6 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+app.UseStatusCodePagesWithReExecute("/Error", "?code={0}");
+
 app.Run();
