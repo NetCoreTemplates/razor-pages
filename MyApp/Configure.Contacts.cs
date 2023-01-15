@@ -12,7 +12,7 @@ namespace MyApp;
 /// </summary>
 public class MyValidators : ScriptMethods
 {
-    public IPropertyValidator ValidColor() => new PredicateValidator((i,x,ctx) => x?.ToString().IsValidColor() == true);
+    public IPropertyValidator ValidColor() => new PredicateValidator((i,x,ctx) => x?.ToString()?.IsValidColor() == true);
 }
 
 public class ConfigureContacts : IHostingStartup 

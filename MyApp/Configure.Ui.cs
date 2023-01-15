@@ -1,8 +1,5 @@
-using System.Net;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MyApp.ServiceModel.Types;
-using ServiceStack.Text;
 
 [assembly: HostingStartup(typeof(MyApp.ConfigureUi))]
 
@@ -12,8 +9,11 @@ public class ConfigureUi : IHostingStartup
 {
     public void Configure(IWebHostBuilder builder) => builder
         .ConfigureAppHost(appHost => {
-            appHost.CustomErrorHttpHandlers[HttpStatusCode.Forbidden] = new RazorHandler("/Forbidden");
-            
+
+            RazorPage.Config = new() {
+                ForbiddenPartial = "~/Pages/Shared/Forbidden.cshtml", //Optional: Render partial in same page instead
+            };
+
             // Populates @Html.Navbar() menu
             View.NavItems.AddRange(new List<NavItem> {
                 new() { Href = "/Privacy",  Label = "Privacy" },

@@ -12,9 +12,9 @@ public class GetContacts : IGet, IReturn<GetContactsResponse>
 {
     public int? Id { get; set; }
 }
-public class GetContactsResponse 
+public class GetContactsResponse
 {
-    public List<Contact>? Results { get; set; }
+    public List<Contact> Results { get; set; } = new();
     public ResponseStatus? ResponseStatus { get; set; }
 }
 
