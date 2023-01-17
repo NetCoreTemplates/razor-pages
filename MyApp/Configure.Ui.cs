@@ -22,6 +22,7 @@ public class ConfigureUi : IHostingStartup
                 new() { Href = "/SignIn",   Label = "Sign In",  Hide = When.IsAuthenticated },
                 new() { Href = "/Profile",  Label = "Profile",  Show = When.IsAuthenticated },
                 new() { Href = "/Admin",    Label = "Admin",    Show = When.HasRole("admin") },
+                new() { Href = "/auth/logout?continue=/", Label = "Sign Out", Show = When.IsAuthenticated },
             });
             
             //Referenced in Contacts.cs EvalAllowableEntries
