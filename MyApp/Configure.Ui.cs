@@ -16,12 +16,12 @@ public class ConfigureUi : IHostingStartup
 
             // Populates @Html.Navbar() menu
             View.NavItems.AddRange(new List<NavItem> {
-                new() { Href = "/Privacy",  Label = "Privacy" },
+                new() { Href = "/Privacy",  Label = "Privacy"  },
                 new() { Href = "/TodoMvc",  Label = "Todo Mvc" },
-                new() { Href = "/Contacts", Label = "Contacts", Show = When.IsAuthenticated },
-                new() { Href = "/SignIn",   Label = "Sign In",  Hide = When.IsAuthenticated },
-                new() { Href = "/Profile",  Label = "Profile",  Show = When.IsAuthenticated },
-                new() { Href = "/Admin",    Label = "Admin",    Show = When.HasRole("admin") },
+                new() { Href = "/Contacts", Label = "Contacts" },
+                new() { Href = "/SignIn",   Label = "Sign In", Hide = When.IsAuthenticated },
+                new() { Href = "/Profile",  Label = "Profile", Show = When.IsAuthenticated },
+                new() { Href = "/Admin",    Label = "Admin",   Show = When.HasRole("admin") },
                 new() { Href = "/auth/logout?continue=/", Label = "Sign Out", Show = When.IsAuthenticated },
             });
             

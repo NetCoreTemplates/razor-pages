@@ -28,11 +28,11 @@
     })
 
     @Html.ImportMap(new() {
-        ["@popperjs/core"]       = new("/lib/js/popper.js", "https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"),
-        ["bootstrap"]            = new("/lib/js/bootstrap.mjs", "https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.esm.min.js"),
-        ["vue"]                  = new("/lib/js/vue.mjs", "https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js"),
-        ["@servicestack/client"] = new("/lib/js/servicestack-client.mjs", "https://unpkg.com/@servicestack/client/dist/servicestack-client.min.mjs"),
-        ["@servicestack/vue"]    = new("/lib/js/servicestack-vue.mjs", "https://unpkg.com/@servicestack/vue@3/dist/servicestack-vue.min.mjs")
+        ["@popperjs/core"]       = ("/lib/js/popper.js",               "https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js"),
+        ["bootstrap"]            = ("/lib/js/bootstrap.mjs",           "https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.esm.min.js"),
+        ["vue"]                  = ("/lib/js/vue.mjs",                 "https://unpkg.com/vue@3.2.45/dist/vue.esm-browser.prod.js"),
+        ["@servicestack/client"] = ("/lib/js/servicestack-client.mjs", "https://unpkg.com/@servicestack/client@2.0.0/dist/servicestack-client.min.mjs"),
+        ["@servicestack/vue"]    = ("/lib/js/servicestack-vue.mjs",    "https://unpkg.com/@servicestack/vue@3.0.11/dist/servicestack-vue.min.mjs")
     })
 </head>
 <body>
@@ -46,6 +46,7 @@
             </button>
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
+                    @* Defined in Configure.Ui.cs *@
                     @Html.Navbar()
                 </ul>
             </div>

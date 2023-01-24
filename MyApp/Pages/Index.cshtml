@@ -18,11 +18,16 @@
     <pre class="fs-4">$ npm install</pre>
 </div>
 
-<div class="mt-5 d-flex justify-content-center">
-    <div class="w-sm">
-        <h2><a href="/ui/Hello">Hello</a> API</h2>
-        <input class="form-control" type="text" id="txtName">
-        <h4 id="result" class="mt-4 text-success text-center"></h4>
+<div class="mt-5">
+    <div class="mx-auto w-sm">
+        <div class="">
+            <input class="form-control" type="text" id="txtName" value="Razor Pages">
+            <h4 id="result" class="my-4 text-success text-center">&nbsp;</h4>
+        </div>
+
+        <h4 class="fw-normal text-center">
+            <a href="/ui/Hello">Call Hello</a> in API Explorer
+        </h4>
     </div>
 </div>
 
@@ -32,9 +37,10 @@ import { client } from "/js/default.mjs"
 import { Hello } from "/js/dtos.mjs"
 
 on("#txtName", {
-    async keyup(e) {
+    async input(e) {
         let api = await client.api(new Hello({ name:e.target.value }))
         $1('#result').innerHTML = api.response.result
-    },
+    }
 })
+$1('#txtName').dispatchEvent(new Event('input'))
 </script>
