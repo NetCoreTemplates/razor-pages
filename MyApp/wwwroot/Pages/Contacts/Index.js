@@ -1,7 +1,7 @@
 import { $1, bootstrapForm } from "@servicestack/client"
 import { client } from "../../js/default.mjs"
 import { Contact, GetContacts, DeleteContact } from "../../js/dtos.mjs"
-import { createApp, reactive, ref, computed } from "vue"
+import { createApp, reactive, computed } from "vue"
 
 /** @typedef CONTACTS - declared in Contacts/Index.cshtml */
 let contacts = window.CONTACTS
