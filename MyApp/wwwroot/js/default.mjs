@@ -1,4 +1,4 @@
 // App's JavaScript 
-import { JsonServiceClient } from "@servicestack/client";
+import { JsonApiClient } from "@servicestack/client"
 
-export var client = new JsonServiceClient()
+export var client = JsonApiClient.create()
