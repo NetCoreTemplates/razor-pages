@@ -3,11 +3,14 @@
 const writeTo = './wwwroot/lib'
 const files = {
   js: {
-      'popper.js':               'https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js',
-      'bootstrap.mjs':           'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.esm.min.js',
-      'vue.mjs':                 'https://unpkg.com/vue@3.2.45/dist/vue.esm-browser.js',
-      'servicestack-client.mjs': 'https://unpkg.com/@servicestack/client/dist/servicestack-client.mjs',
-      'servicestack-vue.mjs':    'https://unpkg.com/@servicestack/vue@3/dist/servicestack-vue.mjs',
+      'popper.js':                   'https://cdn.jsdelivr.net/npm/@popperjs/core@2/dist/umd/popper.min.js',
+      'bootstrap.mjs':               'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.esm.min.js',
+      'vue.mjs':                     'https://unpkg.com/vue@3/dist/vue.esm-browser.js',
+      'vue.min.mjs':                 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js',
+      'servicestack-client.mjs':     'https://unpkg.com/@servicestack/client@2/dist/servicestack-client.mjs',
+      'servicestack-client.min.mjs': 'https://unpkg.com/@servicestack/client@2/dist/servicestack-client.min.mjs',
+      'servicestack-vue.mjs':        'https://unpkg.com/@servicestack/vue@3/dist/servicestack-vue.mjs',
+      'servicestack-vue.min.mjs':    'https://unpkg.com/@servicestack/vue@3/dist/servicestack-vue.min.mjs',
   },
   css: {
       'bootstrap.css': 'https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css',

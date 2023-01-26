@@ -80,14 +80,12 @@
   </a>  
 </template>
 
-<script>TODOS = @((await Gateway.SendAsync(new QueryTodos())).Results.AsRawJson())</script>
-
 <script type="module">
 import { createApp } from 'vue'
 import { $1 } from "@@servicestack/client"
 import createStore from '/Pages/TodoMvc.js'
 import ServiceStackVue from "@@servicestack/vue"
-const store = createStore(TODOS)
+const store = createStore(@await ApiResultsAsJsonAsync(new QueryTodos()))
 
 const FilterTab = {
     template: $1('#FilterTab-template'),

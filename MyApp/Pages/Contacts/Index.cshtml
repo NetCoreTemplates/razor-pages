@@ -1,5 +1,4 @@
 @page
-@using MyApp.ServiceModel
 @if (!await Html.EnsureAuthenticatedAsync()) { return; }
 
 <div class="w-sm">
@@ -77,5 +76,42 @@
     </table>
 </template>
 
-<script>CONTACTS = @((await Gateway.SendAsync(new GetContacts())).Results.AsRawJson());</script>
-<script type="module" src="Pages/Contacts/Index.js"></script>
+<script type="module">
+import { $1, bootstrapForm } from "@@servicestack/client"
+import { client } from "/js/default.mjs"
+import { Contact, GetContacts, DeleteContact } from "/js/dtos.mjs"
+import { createApp, reactive, computed } from "vue"
+
+let contactsApi = @await ApiAsJsonAsync(new GetContacts())
+let contacts = contactsApi.results
+
+let AppData = reactive({ contacts })
+
+bootstrapForm($1("form"), {
+    success: function (r) {
+        $1("form").reset()
+        AppData.contacts.push(r.result)
+    },
+})
+
+createApp({
+    template:$1('#results-template'),
+    setup(props) {
+        let contacts = computed(() => AppData.contacts)
+
+        const deleteContact = async ({ id }) => {
+            if (!confirm('Are you sure?'))
+                return;
+            await client.apiVoid(new DeleteContact({ id }))
+            let api = await client.api(new GetContacts())
+            if (api.succeeded) {
+                AppData.contacts = api.response.results
+            }
+        }
+        return {
+            contacts,
+            deleteContact,
+        }
+    },
+}).mount('#results')
+</script>
