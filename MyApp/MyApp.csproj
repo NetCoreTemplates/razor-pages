@@ -12,6 +12,14 @@
     <Using Include="ServiceStack.Mvc" />
   </ItemGroup>
 
+  <!-- dotnet watch support -->
+  <Target Name="RazorWatch" BeforeTargets="_CoreCollectWatchItems">
+    <ItemGroup>
+      <RazorWatch Include="**\*.cshtml" />
+      <Watch Include="%(RazorWatch.FullPath)" />
+    </ItemGroup>
+  </Target>
+
   <ItemGroup>
     <PackageReference Include="ServiceStack" Version="6.*" />
     <PackageReference Include="ServiceStack.Mvc" Version="6.*" />
