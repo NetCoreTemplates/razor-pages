@@ -1,6 +1,6 @@
 {
     "scripts": {
         "postinstall": "node postinstall.js",
-        "dtos": "cd wwwroot && x mjs"
+        "dtos": "x mjs"
     }
 }
