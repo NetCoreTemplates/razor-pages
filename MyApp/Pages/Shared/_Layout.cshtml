@@ -9,23 +9,11 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@ViewData["Title"] - MyApp</title>
-    @Html.BundleCss(new BundleOptions {
-        Sources = {
-            "/lib/css/",
-        },
-        SaveToDisk = !debug,
-        OutputTo = $"/css/lib.bundle{min}.css"
-    })
-
-    @Html.BundleCss(new BundleOptions {
-        Sources = {
-            "/styles/default.css",
-        },
-        Minify = !debug,
-        Cache = !debug,
-        SaveToDisk = !debug,
-        OutputTo = $"/css/bundle{min}.css"
-    })
+    
+    <link rel="stylesheet" href="/lib/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/css/buttons.css" />
+    <link rel="stylesheet" href="/lib/css/svg-auth.css" />
+    <link rel="stylesheet" href="/styles/default.css" />
 
     @Html.ImportMap(new() {
         ["@popperjs/core"]       = ("/lib/js/popper.js",               "/lib/js/popper.js"),
