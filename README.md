@@ -1,10 +1,10 @@
 # razor-pages
 
-.NET 6.0 Razor Pages Website
+.NET 8.0 Razor Pages Website with [ServiceStack Auth](https://docs.servicestack.net/auth/authentication-and-authorization)
 
 [![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/razor-pages.png)](http://razor-pages.web-templates.io/)
 
-> Browse [source code](https://github.com/NetCoreTemplates/razor), view live demo [razor-pages.web-templates.io](http://razor-pages.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
+> Browse [source code](https://github.com/NetCoreTemplates/razor-pages), view live demo [razor-pages.web-templates.io](http://razor-pages.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
 
     $ dotnet tool install -g x
 
