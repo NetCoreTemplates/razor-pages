@@ -1,4 +1,5 @@
 using ServiceStack;
+using ServiceStack.Admin;
 using ServiceStack.Web;
 using ServiceStack.Auth;
 using ServiceStack.Configuration;
@@ -41,6 +42,9 @@ namespace MyApp
                 var authRepo = appHost.Resolve<IAuthRepository>();
                 authRepo.InitSchema();
                 CreateUser(authRepo, "admin@email.com", "Admin User", "p@55wOrd", roles:new[]{ RoleNames.Admin });
+                
+                // Admin Users UI at /admin-ui/users
+                appHost.Plugins.Add(new AdminUsersFeature());
             }, afterConfigure: appHost => 
                 appHost.AssertPlugin<AuthFeature>().AuthEvents.Add(new AppUserAuthEvents()));
 
