@@ -29,24 +29,25 @@ namespace MyApp
     {
         public void Configure(IWebHostBuilder builder) => builder
             .ConfigureServices(services => {
-                //services.AddSingleton<ICacheClient>(new MemoryCacheClient()); //Store User Sessions in Memory Cache (default)
+                //override the default registration validation with your own custom implementation
+                services.AddSingleton<IValidator<Register>, CustomRegistrationValidator>();
             })
             .ConfigureAppHost(appHost => {
                 var appSettings = appHost.AppSettings;
                 appHost.Plugins.Add(new AuthFeature(() => new CustomUserSession(),
-                    new IAuthProvider[] {
+                    [
                         new CredentialsAuthProvider(appSettings),     /* Sign In with Username / Password credentials */
-                        new FacebookAuthProvider(appSettings),        /* Create App https://developers.facebook.com/apps */
-                        new GoogleAuthProvider(appSettings),          /* Create App https://console.developers.google.com/apis/credentials */
-                        new MicrosoftGraphAuthProvider(appSettings),  /* Create App https://apps.dev.microsoft.com */
-                    }) {
+                            new FacebookAuthProvider(appSettings),        /* Create App https://developers.facebook.com/apps */
+                            new GoogleAuthProvider(appSettings),          /* Create App https://console.developers.google.com/apis/credentials */
+                            new MicrosoftGraphAuthProvider(appSettings) /* Create App https://apps.dev.microsoft.com */
+                    ]) {
                         HtmlRedirect = "/signin"
                     });
 
                 appHost.Plugins.Add(new RegistrationFeature()); //Enable /register Service
 
-                //override the default registration validation with your own custom implementation
-                appHost.RegisterAs<CustomRegistrationValidator, IValidator<Register>>();
+                // Admin Users UI at /admin-ui/users
+                appHost.Plugins.Add(new AdminUsersFeature());
             });
     }
 }
