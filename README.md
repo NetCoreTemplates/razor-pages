@@ -1,18 +1,15 @@
 # razor-pages
 
-.NET 8.0 Razor Pages Website with [ServiceStack Auth](https://docs.servicestack.net/auth/authentication-and-authorization)
+.NET 10.0 Razor Pages Website with [ServiceStack Auth](https://docs.servicestack.net/auth/authentication-and-authorization)
 
 [![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/razor-pages.png)](http://razor-pages.web-templates.io/)
 
-> Browse [source code](https://github.com/NetCoreTemplates/razor-pages), view live demo [razor-pages.web-templates.io](http://razor-pages.web-templates.io) and install with [dotnet-new](https://docs.servicestack.net/dotnet-new):
+> Browse [source code](https://github.com/NetCoreTemplates/razor-pages), view live demo [razor-pages.web-templates.io](http://razor-pages.web-templates.io):
 
-    $ dotnet tool install -g x
+```bash
+npx create-net razor-pages ProjectName
+```
 
-    $ x new razor-pages ProjectName
+## Jumpstart with Copilot
 
-Alternatively write new project files directly into an empty repository, using the Directory Name as the ProjectName:
-
-    $ git clone https://github.com/<User>/<ProjectName>.git
-    $ cd <ProjectName>
-    $ x new razor-pages
-
+Instantly [scaffold a new App with this template](https://github.com/new?template_name=razor-pages&template_owner=NetCoreTemplates) using GitHub Copilot, just describe the features you want and watch Copilot build it!

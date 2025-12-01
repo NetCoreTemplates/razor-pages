@@ -1,6 +1,6 @@
 {
     "scripts": {
         "postinstall": "node postinstall.js",
-        "dtos": "x mjs"
+        "dtos": "npx get-dtos mjs"
     }
 }
